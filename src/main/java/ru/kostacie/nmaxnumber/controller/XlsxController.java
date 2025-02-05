@@ -10,14 +10,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.kostacie.nmaxnumber.service.XlsxService;
 
+
+/**
+ * Контроллер обработки запросов к сервису XlsxService.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/xlsx")
-@Tag(name = "XLSX Processor", description = "Обработка Excel-файлов")
+@Tag(name = "XLSX Controller", description = "Обработка Excel-файлов")
 public class XlsxController {
 
     private final XlsxService xlsxService;
 
+    /**
+     * Получает N-ое максимальное число из указанного XLSX-файла.
+     *
+     * @param filePath путь к файлу на локальной машине
+     * @param n        порядковый номер максимального числа
+     * @return N-ое максимальное число
+     */
     @GetMapping("/find-max")
     @Operation(summary = "Получить N-ое максимальное число из файла",
             description = "Читает числа из XLSX-файла и возвращает N-ое по величине число")
